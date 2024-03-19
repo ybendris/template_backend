@@ -1,3 +1,4 @@
-FROM ubuntu:jammy
-COPY target/springboot-graalvm-docker /springboot-graalvm-docker
-CMD ["/springboot-graalvm-docker"]
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
